@@ -1,0 +1,14 @@
+*.[oa]
+*~
+*.swp
+*.txt
+*.csv
+*.xls
+*.xlsx
+*.xml
+*.iml
+.*
+*--*
+!.gitignore
+node_modules/
+log/*
