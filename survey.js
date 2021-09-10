@@ -4,9 +4,9 @@ const equipment = require(__dirname + "/equipment/" + config.equipment.typeEquip
 
 function survey (equipment){
     setTimeout(function (){
-            equipment.run();
+            equipment.do();
             survey(equipment);
     }, config.equipment.timeout);
-};
+}
 
 survey(equipment);
