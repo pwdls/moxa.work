@@ -1,0 +1,13 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": "7000",
+    "dir": "C:/SERVER/data/moxa.work/data",
+    "dirOrigin": "C:/SERVER/data/moxa.work/data/origin",
+    "lifetimeData": 14
+  },
+  "equipment": {
+    "typeEquipment": "MOXA-ioLogik-1200",
+    "timeout": 1000
+  }
+}

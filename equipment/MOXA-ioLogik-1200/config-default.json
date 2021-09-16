@@ -1,7 +1,7 @@
 {
   "options": {
-    "host": "192.168.10.200",
-    "port": 80,
+    "host": "188.246.173.122",
+    "port": 47383,
     "path": "/api/slot/0/io/di",
     "method": "GET",
     "headers": {
