@@ -4,7 +4,7 @@
     "port": "7000",
     "dir": "C:/SERVER/data/moxa.work/data",
     "dirOrigin": "C:/SERVER/data/moxa.work/data/origin",
-    "lifetimeData": 14
+    "lifetimeDay": 14
   },
   "equipment": {
     "typeEquipment": "MOXA-ioLogik-1200",
