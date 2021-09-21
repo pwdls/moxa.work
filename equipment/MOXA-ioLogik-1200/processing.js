@@ -1,29 +1,17 @@
-const getStaticData = require("../../services/getStaticData"),
-    staticData = getStaticData.data();
+require("dotenv").config();
 
-exports.do = function (response){
+exports.do = function (response, userStatus){
     let result = {
-        "typeEquipment": staticData.config.equipment.typeEquipment,
-        "userStatus": "Выключен",
+        "typeEquipment": process.env.midl_typeEquipment,
+        "userStatus": userStatus,
         "properties": []
     };
 
     response.io.di.forEach(function (elem){
-        let foo;
-        if(elem.diCounterValue || elem.diCounterValue === 0){
-            foo = {
-                "inName": elem.diIndex,
-                "inMode": "counter",
-                "inStatus": elem.diCounterValue
-            };
-        } else {
-            foo = {
-                "inName": elem.diIndex,
-                "inMode": "On/Off",
-                "inStatus": elem.diStatus
-            }
-        }
-        result.properties.push(foo);
+        result.properties.push({
+            "inName": elem.diIndex,
+            "inStatus": elem.diStatus
+        });
     });
     return result;
 }

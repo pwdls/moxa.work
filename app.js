@@ -1,21 +1,16 @@
-const fs = require('fs');
-const config = JSON.parse(fs.readFileSync(__dirname + '/config/config.json','utf8'));
-
+require("dotenv").config();
 const express = require('express'),
     app = express();
 const bodyParser = require('body-parser');
 
-const apiController = require("./controllers/api.controller");
-
-const host = config.server.host;
-const port = config.server.port;
+const apiController = require(process.env.midl_path + "/controllers/api.controller");
+const protocol = process.env.midl_port === 443 ? "https" : "http";
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.all('/api/v1', apiController.work);
 
-app.listen(port, host, () => {
-        console.log(`Server listens http://${host}:${port}`);
+app.listen(process.env.midl_port, process.env.midl_host, () => {
+        console.log(`Server listens ${protocol}://${process.env.midl_host}:${process.env.midl_port}`);
     }
 );
