@@ -1,3 +1,4 @@
+require("dotenv").config();
 const fs = require("fs");
 const processing = require("./processing");
 const getWriteResult = require(process.env.midl_path + "/services/writeResult");
