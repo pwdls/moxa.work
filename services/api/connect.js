@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-class GetConnect {
+class Connect {
     work(req, res) {
         fs.readFile(process.env.midl_path + "/log/status.txt", "utf8", function (err,data) {
             res.send(
@@ -16,4 +16,4 @@ class GetConnect {
     }
 }
 
-module.exports = new GetConnect();
+module.exports = new Connect();
