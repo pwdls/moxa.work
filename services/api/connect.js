@@ -2,7 +2,7 @@ const fs = require("fs");
 
 class Connect {
     work(req, res) {
-        fs.readFile(process.env.midl_path + "/log/status.txt", "utf8", function (err,data) {
+        fs.readFile(process.env.midl_path_userStatus, "utf8", function (err,data) {
             res.send(
                 JSON.stringify({
                     result: 0,
