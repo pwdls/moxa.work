@@ -9,7 +9,7 @@ class getStatus {
                     result: 0,
                     data: {
                         "typeEquipment": process.env.midl_typeEquipment,
-                        "userStatus": JSON.parse(req.body.data)["userStatus"]
+                        "userStatus": req.body.data.user
                     }
                 })
             );
