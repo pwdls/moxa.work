@@ -9,13 +9,31 @@ class fileAndDirectory {
             .sort((a, b) => b.mtime.getTime() - a.mtime.getTime());
     }
 
-    getContentsOfTheOldestFile(dir, res){
+    getListDir(dir) {
+        return fs.readdirSync(dir)
+            .filter(f => fs.lstatSync(dir + f).isDirectory())
+            .map(file => ({file, mtime: fs.lstatSync(dir + file).mtime}))
+            .sort((a, b) => a.mtime.getTime() - b.mtime.getTime());
+    }
+
+    getContentsOfTheOldestFile(dir, res) {
         let listFile = this.getListFile(dir);
         //console.log(dir + listFile[0]['file']);
-        if (listFile.length){
+        if (listFile.length) {
             fs.readFile(dir + listFile[0]['file'], 'utf8', (err, data) => {
-               // console.log(data);
-                return res.send(data);
+                // console.log(data);
+                fs.readFile(process.env.midl_path + '/config/config.json', 'utf8', (err, config) => {
+                    if (err) throw err;
+                    config = JSON.parse(config);
+                //   console.log(config);
+                    data = JSON.parse(data);
+               //     console.log(data);
+                    data.properties.forEach((val, key) => {
+                        if (config.nameDI[val.inName] !== undefined)
+                            data.properties[key]["inName"] = config.nameDI[val.inName];
+                    });
+                    return res.send(JSON.stringify(data));
+                });
             });
         } else res.send('{"result":0, "data":""}');
     }

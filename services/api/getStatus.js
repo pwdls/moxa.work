@@ -12,10 +12,12 @@ class getStatus {
     }
 
     getDirPath() {
-        let now = new Date();
-        return process.env.midl_dir + "/" + now.toISOString().substr(0, 10) + "/"
+       // let now = new Date();
+        let dir = fileAndDirectory.getListDir(process.env.midl_dir + "/");
+       // console.log(dir);
+        return process.env.midl_dir + "/" + dir[0]["file"] + "/";
+       // return process.env.midl_dir + "/" + now.toISOString().substr(0, 10) + "/"
     }
-
 }
 
 module.exports = new getStatus();
