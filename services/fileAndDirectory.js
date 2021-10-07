@@ -21,18 +21,20 @@ class fileAndDirectory {
         //console.log(dir + listFile[0]['file']);
         if (listFile.length) {
             fs.readFile(dir + listFile[0]['file'], 'utf8', (err, data) => {
-                // console.log(data);
-                fs.readFile(process.env.midl_path + '/config/config.json', 'utf8', (err, config) => {
-                    if (err) throw err;
-                    config = JSON.parse(config);
-                //   console.log(config);
-                    data = JSON.parse(data);
-               //     console.log(data);
-                    data.properties.forEach((val, key) => {
-                        if (config.nameDI[val.inName] !== undefined)
-                            data.properties[key]["inName"] = config.nameDI[val.inName];
+                fs.readFile(process.env.midl_path_userStatus, 'utf8', (err, userStatus) => {
+                    fs.readFile(process.env.midl_path + '/config/config.json', 'utf8', (err, config) => {
+                        if (err) throw err;
+                        config = JSON.parse(config);
+                        //   console.log(config);
+                        data = JSON.parse(data);
+                        //     console.log(data);
+                        data.properties.forEach((val, key) => {
+                            if (config.nameDI[val.inName] !== undefined)
+                                data.properties[key]["inName"] = config.nameDI[val.inName];
+                        });
+                        data.userStatus = userStatus;
+                        return res.send(JSON.stringify(data));
                     });
-                    return res.send(JSON.stringify(data));
                 });
             });
         } else res.send('{"result":0, "data":""}');
