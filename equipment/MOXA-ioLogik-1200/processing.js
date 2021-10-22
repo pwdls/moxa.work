@@ -2,7 +2,7 @@ require("dotenv").config();
 
 exports.do = function (response, userStatus){
     let result = {
-        "typeEquipment": process.env.midl_typeEquipment,
+        "typeEquipment": process.env.midl_nameEquipment,
         "userStatus": userStatus,
         "properties": []
     };
