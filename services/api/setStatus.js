@@ -8,7 +8,7 @@ class getStatus {
                 JSON.stringify({
                     result: 0,
                     data: {
-                        "typeEquipment": process.env.midl_typeEquipment,
+                        "typeEquipment": process.env.midl_nameEquipment,
                         "userStatus": JSON.parse(req.body.data).userStatus
                     }
                 })
