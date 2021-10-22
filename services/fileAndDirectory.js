@@ -33,6 +33,7 @@ class fileAndDirectory {
                                 data.properties[key]["inName"] = config.nameDI[val.inName];
                         });
                         data.userStatus = userStatus;
+                        data.typeEquipment = process.env.midl_nameEquipment;
                         return res.send(JSON.stringify(data));
                     });
                 });

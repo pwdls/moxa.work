@@ -7,7 +7,7 @@ class Connect {
                 JSON.stringify({
                     result: 0,
                     data: {
-                        typeEquipment: process.env.midl_typeEquipment,
+                        typeEquipment: process.env.midl_nameEquipment,
                         status: data
                     }
                 })
