@@ -16,7 +16,7 @@ function main() {
     readDir(process.env.midl_dir)
         .then(result => Promise.all(result))
         .then(result => {
-            return files = result.flat(2)
+            return files = flattenDeep(result);
         })
         .then(result => result.map(val => readFileData(val)))
         .then(result => Promise.all(result))
@@ -29,6 +29,10 @@ function main() {
         .catch(err => {
             console.log(err);
         })
+}
+
+function flattenDeep(arr) {
+    return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
 }
 
 function deleteFiles() {
@@ -152,9 +156,7 @@ function readFiles(dir) {
 function readDir(defaultDir) {
     return new Promise((resolve, reject) => {
         fs.readdir(defaultDir, (err, dirList) => {
-            if (err) {
-                reject(err);
-            }
+            if (err) reject(err);
             dirList.forEach((val, key) => {
                 dirList[key] = defaultDir + '/' + val;
             });
