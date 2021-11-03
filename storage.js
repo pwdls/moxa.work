@@ -7,6 +7,7 @@ String.prototype.replaceAt = function (index, replacement) {
 }
 let fileName = process.env.midl_path_temp + '/' + GUID() + '.csv';
 let files;
+let DI_config = JSON.parse(fs.readFileSync(process.env.midl_path + '/config/DI_config.json'));
 
 function main() {
     if (!fs.existsSync(fileName)) fs.open(fileName, 'w', err => {
@@ -46,7 +47,8 @@ function deleteFiles() {
 
 function writeFile(arr, key) {
     arr.map((val) => {
-        fs.appendFile(fileName, key + ";" + val.time + ";" + val.status + "\n", () => {
+        val.status = +(DI_config[key]['revers'] !== 1 && val.status);
+          fs.appendFile(fileName, key + ";" + DI_config[key]['type'] +  ";\"" + val.time + "\";" + val.status + "\n", () => {
         });
     });
 }

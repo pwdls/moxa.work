@@ -3,7 +3,7 @@ const fs = require("fs");
 const processing = require("./processing");
 const getWriteResult = require(process.env.midl_path + "/services/writeResult");
 const getJSON = require(process.env.midl_path + "/services/getJSON");
-const config = JSON.parse(fs.readFileSync(__dirname + "/config.json"), "utf8");
+const config = JSON.parse(fs.readFileSync(__dirname + "/DI_config.json"), "utf8");
 const getStaticData = require(process.env.midl_path + "/services/getStaticData");
 
 exports.do = function () {

@@ -22,15 +22,15 @@ class fileAndDirectory {
         if (listFile.length) {
             fs.readFile(dir + listFile[0]['file'], 'utf8', (err, data) => {
                 fs.readFile(process.env.midl_path_userStatus, 'utf8', (err, userStatus) => {
-                    fs.readFile(process.env.midl_path + '/config/config.json', 'utf8', (err, config) => {
+                    fs.readFile(process.env.midl_path + '/config/DI_config.json', 'utf8', (err, config) => {
                         if (err) throw err;
                         config = JSON.parse(config);
                         //   console.log(config);
                         data = JSON.parse(data);
                         //     console.log(data);
                         data.properties.forEach((val, key) => {
-                            if (config.nameDI[val.inName] !== undefined)
-                                data.properties[key]["inName"] = config.nameDI[val.inName];
+                            if (config[val.inName] !== undefined)
+                                data.properties[key]["inName"] = config[val.inName]["name"];
                         });
                         data.userStatus = userStatus;
                         data.typeEquipment = process.env.midl_nameEquipment;
