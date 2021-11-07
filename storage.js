@@ -78,23 +78,14 @@ function approximation(arr) {
                 if (
                     (
                         (time !== k)
-                        && ((new Date(k) - new Date(time)) <= 2 * process.env.midl_timeout)
                         && arr[k] !== sample
                     )
-                    || sample === 9
                 ) {
                     time = k;
                     sample = arr[k];
                     result.push({
                         'time': k,
                         'status': arr[k]
-                    });
-                } else if (((new Date(k) - new Date(time)) > 2 * process.env.midl_timeout) && time !== k && sample !== 9) {
-                    time = (new Date((new Date(time)).getTime() + 1000)).toISOString();
-                    sample = 9;
-                    result.push({
-                        'time': time,
-                        'status': sample
                     });
                 }
             }
