@@ -52,7 +52,7 @@ function deleteFiles() {
 function writeFile(arr, key) {
     arr.map((val) => {
         val.status = +(DI_config[key]['revers'] !== 1 && val.status);
-          fs.appendFile(fileName, key + ";" + DI_config[key]['type'] +  ";\"" + val.time + "\";" + val.status + "\n", () => {
+          fs.appendFile(fileName, key + ";" + DI_config[key]['type'] + ";" + val.status +   ";\"" + val.time + "\"\n", () => {
         });
     });
 }
