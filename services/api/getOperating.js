@@ -25,12 +25,13 @@ class getOperating {
         let day5 = (new Date(Date.now() - 4 * 86400000)).toISOString();
 
 
-        let result = {};
-        result[day1] = +(f[day] * hour / 24).toFixed(1);
-        result[day2] = f[day + 1];
-        result[day3] = f[day + 2];
-        result[day4] = f[day + 3];
-        result[day5] = f[day + 4];
+        let result = [
+            {date: day1, value: +(f[day] * hour / 24).toFixed(1)},
+            {date: day2, value:f[day + 1]},
+            {date: day3, value:f[day + 2]},
+            {date: day4, value:f[day + 3]},
+            {date: day5, value:f[day + 4]}
+        ];
 
         let foo = {
             result: 0,
@@ -41,6 +42,8 @@ class getOperating {
         );
 
     }
-}
+    }
 
-module.exports = new getOperating();
+    module
+.
+    exports = new getOperating();
