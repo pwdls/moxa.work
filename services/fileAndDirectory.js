@@ -34,6 +34,7 @@ class fileAndDirectory {
                         });
                         data.userStatus = userStatus;
                         data.typeEquipment = process.env.midl_nameEquipment;
+                        data.equipmentStatus = "Под нагрузкой";
                         return res.send(JSON.stringify(data));
                     });
                 });
